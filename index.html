@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Sun & hill: topographic methods</title>
+
+    <link rel="stylesheet" href="https://uky-gis.github.io/geo509/slides/dist/reset.css" />
+    <link rel="stylesheet" href="https://uky-gis.github.io/geo509/slides/dist/reveal.css" />
+    <link rel="stylesheet" href="https://uky-gis.github.io/geo509/slides/dist/theme/league-109.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://uky-gis.github.io/geo509/slides/dist/plugin/highlight/zenburn.css"
+        id="highlight-theme" />
+    <style>
+        /* UK Colors: 
+                #c7c9c8 light gray 
+                #63666a dark gray
+                #15397f dark blue
+                #009bda light blue
+                #0033a0 official blue
+            */
+
+        .top-module {
+            position: absolute;
+            bottom: 1.5em;
+            left: 20px;
+            z-index: 3333;
+            font-size: 0.5em;
+            opacity: 0.5;
+        }
+
+        .item-download {
+            position: absolute !important;
+            /* left: 0 !important;
+      bottom: 0 !important; */
+            transform: translate(calc(100vw/2*-1), 100px) !important;
+            z-index: 9999;
+            font-size: 0.5em;
+            opacity: 1;
+        }
+
+        .highlight-p {
+            background-color: #63666a;
+            padding: 2px;
+        }
+
+        .title-slide-font {
+            font-size: 10rem !important;
+            font-family: "Blackbike", "Condiment", cursive;
+            padding-bottom: 0.5em;
+            text-shadow: 2px 2px 2px #333;
+        }
+
+        .title-font {
+            font-size: 8rem !important;
+            line-height: 0rem;
+            font-family: "Blackbike", "Condiment", cursive;
+            text-shadow: 2px 2px 2px #333;
+        }
+
+        @keyframes shine {
+            0% {
+                color: #fff;
+                text-shadow: 2px 2px 2px #333;
+            }
+
+            70% {
+                color: #ffff00;
+                text-shadow: 0 0 2px #ffff00, 0 0 4px #ffff00, 0 0 6px #ffff00, 0 0 8px #fff, 0 0 10px #fff, 0 0 12px #fff, 0 0 14px #fff, 0 0 16px #fff;
+            }
+
+            100% {
+                color: #fff;
+                text-shadow: 2px 2px 2px #333;
+            }
+        }
+
+        .shine-text {
+            animation: shine 1s 1 ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="top-module">
+            <a target='_blank' href="https://github.com/uky-gis/viz-dsm-change">Repo</a>
+        </div>
+        <div class="slides">
+            <section data-pre-load
+                data-background-image="https://www.outragegis.com/data/weather/img/animation/240504/PurchaseKnob.gif"
+                data-background-opacity="0.4">
+                <span class="title-font">Sun & hill</span>
+                <h5>topographic methods</h5>
+                <h4>@<a href="https://boyd.xyz/t">boyd.xyz/t</a></h4>
+                <!-- <h2>Welcome</h2> -->
+                <div class="ll" style="opacity:60%;">
+                    Yesterday in the Great Smokies<br />Webcam
+                    <a href="https://www.outragegis.com/weather/img/animation" target="_blank">archive</a>
+                </div>
+                <div class='lr'>Exploring multi-temporal DSMs</div>
+            </section>
+            <section data-pre-load
+                data-background-image="https://www.outragegis.com/data/weather/img/animation/240504/PurchaseKnob.gif"
+                data-background-opacity="0.4">
+                <img width="100%" src="https://uky-gis.github.io/geo509/slides/images/logo-uk-geo.png" />
+
+            </section>
+
+            <section class='left'
+                data-background-image='https://www.outragegis.com/data/weather/img/animation/240504/PurchaseKnob.gif'
+                data-background-opacity="0.2">
+                <h3>Boyd Shearer</h3>
+                <ul>
+                    <li class='fragment'>
+                        Senior Lecturer, Department of Geography
+                    </li>
+                    <li class='fragment'>
+                        Online Digital Mapping program <a href="https://newmapsplus.as.uky.edu/" target="_blank">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        outrageGIS mapping trail maps <a href="https://www.outragegis.com/trails/posts/"
+                            target="_blank">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        Contact <a href="https://geography.as.uky.edu/users/blshea1" target="_blank">🔗</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section
+                data-background-image='https://www.outragegis.com/data/weather/img/animation/240504/PurchaseKnob.gif'
+                data-background-opacity="0.4">
+                <span class="title-slide-font shine-text">Sun</h3>
+
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Update: 2019 colloquium </h3>
+                <ul>
+                    <li class='fragment'>
+                        Collection of weather camera time-lapse animations continues.
+                    </li>
+                    <li class='fragment'>
+                        2012–current<span class="fragment">, 13k animated GIFs</span><span class="fragment">, 400
+                            GB</span>
+                    </li>
+                    <li class='fragment'>
+                        Why do this? <span class="fragment">Exercise in owning data?</span>
+                    </li>
+                    <li class='fragment'>
+                        Archive <a href="https://www.outragegis.com/weather/img/animation" target="_blank">🔗</a>
+                    </li>
+                </ul>
+            </section>
+            <section class='left' data-background-image='./images/LookRock.gif' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/ColdMountain.gif' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section data-background-iframe='https://www.outragegis.com/weather/img/animation'
+                data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Update: 2019 colloquium </h3>
+                <ul>
+                    <li class='fragment'>
+                        Collection of weather camera time-lapse animations continues.
+                    </li>
+                    <li class='fragment'>
+                        2012–current<span class="fragment">, 13k animated GIFs</span><span class="fragment">, 400
+                            GB</span>
+                    </li>
+                    <li class='fragment'>
+                        Why do this? <span class="fragment">Exercise in owning data?</span>
+                    </li>
+                    <li class='fragment'>
+                        USGS Topo View <a href="https://ngmdb.usgs.gov/topoview/viewer/#15/35.6497/-83.4396"
+                            target="_blank">🔗</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='./images/mt-le-conte-01.jpg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/mt-le-conte-02.jpg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/mt-le-conte-03.jpg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/mt-le-conte-04.jpg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/jcmf-01.jpeg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/jcmf-02.jpg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/jcmf-03.jpg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/rrg-01.jpg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/rrg-02.jpg' data-background-opacity="1"
+                data-background-size="contain">
+            </section>
+
+            <section class='left' data-background-image='./images/doqq.jpg' data-background-opacity="1">
+            </section>
+
+            <section data-background-iframe='https://www.sheltoweetrace.com/hike/print/' data-background-opacity="1">
+            </section>
+
+            <section data-background-iframe='https://sheltoweetrace.com/hike/scenic/' data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='./images/st-day.jpg' data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='./images/st-day-2.jpg' data-background-opacity="1">
+            </section>
+
+            <section data-background-iframe='https://www.youtube.com/embed/kEkblu_O8Kk' data-background-opacity="1">
+            </section>
+
+            <section
+                data-background-image='https://www.outragegis.com/data/weather/img/animation/240504/PurchaseKnob.gif'
+                data-background-opacity="0.4">
+                <span class="title-slide-font shine-text">Hill</h3>
+
+            </section>
+
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Lidar</h3>
+                <ul>
+                    <li class='fragment'>
+                        Lidar detection and ranging.
+                    </li>
+                    <li class='fragment'>
+                        Densely samples the earth's surface
+                    </li>
+                    <li class='fragment'>
+                        to create point cloud of elevations.
+                    </li>
+                    <li class='fragment'>
+                        KyFromAbove <a href="https://kyfromabove.ky.gov/" target="_blank">🔗</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-iframe='./map-ky/#13.2/38.12258/-83.52908/72/32' data-background-opacity="1">
+            </section>
+
+
+
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Height model</h3>
+                <ul>
+                    <li class='fragment'>
+                        Lidar captures above ground features.
+                    </li>
+                    <li class='fragment'>
+                        DSM: Digital Surface Model.
+                    </li>
+                    <li class='fragment'>
+                        DEM: Digital Elevation Model.
+                    </li>
+                    <li class='fragment'>
+                        <code style="color:rgb(249,181,55)">height = DSM - DEM </code>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-iframe='https://contig.us/hawaii/uky-campus'>
+            </section>
+            <section data-background-image='images/01.jpg' data-background-opacity="1" data-background-size="contain"
+                data-background-color="black">
+            </section>
+
+
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    First use of height model <span class="fragment">visualizing floods</span>
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>2022 floods</h3>
+                <ul>
+                    <li class='fragment'>
+                        Identify informal infrastructure prone to flooding.
+                    </li>
+                    <li class='fragment'>
+                        Notably, private bridges.
+                    </li>
+                    <li class='fragment'>
+                        Relative elevation model (REM) for height above river.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-image='images/HAR_Elkhorn.jpg' data-background-opacity="1"
+                data-background-size="contain" data-background-color="white">
+            </section>
+
+            <section data-background-image='images/HAR_Elkhorn_detail.jpg' data-background-opacity="1"
+                data-background-size="cover" data-background-color="white">
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>25 ft above Troublesome</h3>
+                <ul>
+                    <li class='fragment'>
+                        Subtract height from REM.
+                    </li>
+                    <li class='fragment'>
+                        Jupyter Notebook with ArcPy. <a target='_blank'
+                            href="https://github.com/UKy-GIS/viz-dsm-change/blob/main/scripts/lab-03-inundation.ipynb">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        GEO509 report. <a target='_blank' href="https://uky-gis.github.io/geo509/report-2022">🔗</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-iframe='https://outragegis.com/509/inundation/'>
+            </section>
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Measuring tree heights
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>A tree canopy model</h3>
+                <ul>
+                    <li class='fragment'>
+                        Use NAIP NDVI to identify trees.
+                    </li>
+                    <li class='fragment'>
+                        Extract heights from DSM.
+                    </li>
+                    <li class='fragment'>
+                        Visually select NDVI values for trees.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-image="./images/ndvi_0.jpg" data-background-color="black"
+                data-background-opacity="1">
+            </section>
+
+            <section data-background-image="./images/ndvi_1.jpg" data-background-color="black"
+                data-background-opacity="1">
+            </section>
+
+            <section
+                data-background-iframe='https://uky-gis.github.io/lexington-canopy-model/#14.21/38.03177/-84.51465'>
+            </section>
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Good enough for cartography?
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Caveats</h3>
+                <ul>
+                    <li class='fragment'>
+                        Temporal resolutions don't match.
+                    </li>
+                    <li class='fragment'>
+                        NAIP's profound vertical displacement.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Opportunities</h3>
+                <ul>
+                    <li class='fragment'>
+                        Fuse NDVI with DSM change
+                    </li>
+                    <li class='fragment'>
+                        to find loss and gain of tree canopy.
+                    </li>
+                    <li class='fragment'>
+                        <code
+                            style="color:rgb(249,181,55)">loss = (NDVI<sub>P1</sub> > x) & (height<sub>P2-P1</sub> < y)</code>
+                    </li>
+                </ul>
+            </section>
+
+            <section
+                data-background-iframe='https://uky-gis.github.io/lexington-canopy-model/removed/#14.21/38.03177/-84.51465'>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Accurate?</h3>
+                <ul>
+                    <li class='fragment'>
+                        Again, get into the field.
+                    </li>
+                    <li class='fragment'>
+                        But, what about the historical observations?
+                    </li>
+                    <li class='fragment'>
+                        Google Maps Street View? <a target='_blank'
+                            href="https://www.google.com/maps/@38.0350607,-84.5089571,3a,75y,9.6h,94.94t/data=!3m8!1e1!3m6!1sSNTK41MR6Cnb-ebyuIemdQ!2e0!5s20230501T000000!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3DSNTK41MR6Cnb-ebyuIemdQ%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D101.94194%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192?coh=205409&entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D">🔗</a>
+                        <a target='_blank'
+                            href="https://www.google.com/maps/@38.0575739,-84.4727041,3a,75y,167.06h,73.86t/data=!3m7!1e1!3m5!1sFFNnJIYlw9Baq-iIbaMgEA!2e0!5s20221201T000000!7i16384!8i8192!5m1!1e1?coh=205409&entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D">🔗</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Compare DSMs from <br>Phase 1 and Phase 2
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Simple math</h3>
+                <ul>
+                    <li class='fragment'>
+                        <code style="color:rgb(249,181,55)">change = DSM<sub>P2</sub> - DSM<sub>P1</sub></code>
+                    </li>
+                    <li class='fragment'>
+                        but trickier symbology.
+                    </li>
+                    <li class='fragment'>
+                        Lexington 2010–2019 DSM change over 2019 shaded relief.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-iframe='https://contig.us/hawaii/lex-removed'>
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_0.jpg" data-background-color="white"
+                data-background-opacity="1" data-background-size="contain">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_1.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_2.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_3.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Record of change<br><span class="fragment">lest we forget</span>
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Caveats</h3>
+                <ul>
+                    <li class='fragment'>
+                        If the replacement structure is same height, no change.
+                    </li>
+                    <li class='fragment'>
+                        No understanding of difference.
+                    </li>
+                    <li class='fragment'>
+                        Fuse other data sources?
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Code</h3>
+                <ul>
+                    <li class='fragment'>
+                        Jupyter Notebook with ArcPy. <a target='_blank'
+                            href="https://github.com/UKy-GIS/viz-dsm-change/blob/main/scripts/process_DSM_change.ipynb">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        Shows the process of calculating change between DSMs and colorizing point clouds.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
+                data-markdown data-separator="___" data-background-color=#2D2D2D>
+                <textarea data-template>
+                        ```py 
+                        # Smooth surface to remove artifacts along the edges of tall structures
+                        neighborhood = arcpy.sa.NbrRectangle(3, 3, 'CELL')
+                        change = arcpy.sa.FocalStatistics(change_uncleaned, neighborhood , 'MEDIAN')
+                        # Where has there been increase and decrease in height
+                        filled = arcpy.sa.Con((change > 2), change, 0)
+                        removed = arcpy.sa.Con((change < -2), change, 0)
+                        ```
+                                    </textarea>
+            </section>
+
+            <section data-background-iframe='https://www.youtube.com/embed/lAmC_oRblCs?si=RNr6z7UEa52xPLoR'>
+            </section>
+
+
+
+
+
+
+            <section data-pre-load
+                data-background-image="https://www.outragegis.com/data/weather/img/animation/231009/LookRock.gif"
+                data-background-opacity="0.4">
+                <h5>Thank you</h5>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://uky-gis.github.io/geo509/slides/dist/reveal.js"></script>
+    <script src="https://uky-gis.github.io/geo509/slides/dist/plugin/notes/notes.js"></script>
+    <script src="https://uky-gis.github.io/geo509/slides/dist/plugin/markdown/markdown.js"></script>
+    <script src="https://uky-gis.github.io/geo509/slides/dist/plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            backgroundTransition: "fade",
+            // Transition style
+            transition: "fade", // none/fade/slide/convex/concave/zoom
+
+            // Transition speed
+            transitionSpeed: "fast", // default/fast/slow
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+        });
+    </script>
+</body>
+
+</html>
