@@ -67,9 +67,9 @@
                 text-shadow: 2px 2px 2px #333;
             }
 
-            70% {
+            50% {
                 color: #ffff00;
-                text-shadow: 0 0 2px #ffff00, 0 0 4px #ffff00, 0 0 6px #ffff00, 0 0 8px #fff, 0 0 10px #fff, 0 0 12px #fff, 0 0 14px #fff, 0 0 16px #fff;
+                text-shadow: 0 0 1px orange, 0 0 2px orange, 0 0 3px orange, 0 0 4px lightgoldenrodyellow, 0 0 5px orange;
             }
 
             100% {
@@ -80,6 +80,26 @@
 
         .shine-text {
             animation: shine 1s 1 ease-in-out;
+        }
+
+        @keyframes enlarge {
+            0% {
+                transform: scale(1);
+                font-size: 1em;
+            }
+
+            50% {
+                transform: scale(1.4) !important;
+            }
+
+            100% {
+                transform: scale(1);
+                font-size: 1em;
+            }
+        }
+
+        section a:hover {
+            animation: shine 1s ease-in-out !important;
         }
     </style>
 </head>
@@ -149,10 +169,8 @@
                             GB</span>
                     </li>
                     <li class='fragment'>
-                        Why do this? <span class="fragment">Exercise in owning data?</span>
-                    </li>
-                    <li class='fragment'>
-                        Archive <a href="https://www.outragegis.com/weather/img/animation" target="_blank">🔗</a>
+                        Past calendar year + current year archive <a
+                            href="https://www.outragegis.com/weather/img/animation" target="_blank">🔗</a>
                     </li>
                 </ul>
             </section>
@@ -160,86 +178,126 @@
                 data-background-size="contain">
             </section>
 
-            <section class='left' data-background-image='./images/ColdMountain.gif' data-background-opacity="1"
+            <!-- <section class='left' data-background-image='./images/ColdMountain.gif' data-background-opacity="1"
                 data-background-size="contain">
-            </section>
+            </section> -->
 
             <section data-background-iframe='https://www.outragegis.com/weather/img/animation'
                 data-background-opacity="1">
             </section>
 
+            <section class='left' data-background-image='./images/topo-1.jpg' data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='./images/topo-2.jpg' data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='./images/topo-3.jpg' data-background-opacity="1">
+            </section>
+
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Update: 2019 colloquium </h3>
+                <h3>D Rumsey Map Collection</h3>
                 <ul>
                     <li class='fragment'>
-                        Collection of weather camera time-lapse animations continues.
+                        Eduard Imhof, 1895-1986 <a target="_blank"
+                            href="hhttps://www.davidrumsey.com/luna/servlet/view/search?search=Submit&cat=0&q=topography+imhof&dateRangeStart=&dateRangeEnd=&sort=pub_list_no_initialsort%2Cpub_date%2Cpub_list_no%2Cseries_no">🔗</a>
                     </li>
                     <li class='fragment'>
-                        2012–current<span class="fragment">, 13k animated GIFs</span><span class="fragment">, 400
-                            GB</span>
+                        Carte de France, 1750-1815 <a target="_blank"
+                            href="https://www.davidrumsey.com/luna/servlet/view/search/when/1854?q=Carte%20de%20France&sort=Pub_List_No_InitialSort&os=250">🔗</a>
                     </li>
                     <li class='fragment'>
-                        Why do this? <span class="fragment">Exercise in owning data?</span>
-                    </li>
-                    <li class='fragment'>
-                        USGS Topo View <a href="https://ngmdb.usgs.gov/topoview/viewer/#15/35.6497/-83.4396"
+                        Tiled on a Google Map <a href="https://rumsey.geogarage.com/maps/cassinige.html"
                             target="_blank">🔗</a>
                     </li>
                 </ul>
             </section>
 
-            <section class='left' data-background-image='./images/mt-le-conte-01.jpg' data-background-opacity="1"
-                data-background-size="contain">
+            <section class='left' data-background-image='./images/mt-le-conte-01.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/mt-le-conte-02.jpg' data-background-opacity="1"
-                data-background-size="contain">
+            <section class='left' data-background-image='./images/mt-le-conte-02.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/mt-le-conte-03.jpg' data-background-opacity="1"
-                data-background-size="contain">
+            <section class='left' data-background-image='./images/mt-le-conte-03.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/mt-le-conte-04.jpg' data-background-opacity="1"
-                data-background-size="contain">
+            <section class='left' data-background-image='./images/mt-le-conte-04.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/jcmf-01.jpeg' data-background-opacity="1"
-                data-background-size="contain">
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>USGS Topographic maps</h3>
+                <ul>
+                    <li class='fragment'>
+                        7.5 minute quadrangles are gold standard.
+                    </li>
+                    <li class='fragment'>
+                        1880s–current <a target="_blank"
+                            href="https://pubs.usgs.gov/circ/1341/pdf/circ_1341.pdf">🔗</a></span>
+                    </li>
+                    <li class='fragment'>
+                        USGS Topo View 💯 <a href="https://ngmdb.usgs.gov/topoview/viewer/#15/35.6497/-83.4396"
+                            target="_blank">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        Let's map forest trails.
+                    </li>
+                </ul>
             </section>
 
-            <section class='left' data-background-image='./images/jcmf-02.jpg' data-background-opacity="1"
-                data-background-size="contain">
+            <section class='left' data-background-image='./images/jcmf-01.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/jcmf-03.jpg' data-background-opacity="1"
-                data-background-size="contain">
+            <section class='left' data-background-image='./images/jcmf-02.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/rrg-01.jpg' data-background-opacity="1"
-                data-background-size="contain">
+            <!-- <section class='left' data-background-image='./images/jcmf-03.jpg' data-background-opacity="1">
+            </section> -->
+
+            <section class='left' data-background-image='./images/rrg-01.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/rrg-02.jpg' data-background-opacity="1"
-                data-background-size="contain">
+            <section class='left' data-background-image='./images/rrg-02.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/doqq.jpg' data-background-opacity="1">
+            <section -data-background-image='./images/doqq.jpg' data-background-opacity="1">
+                <h3 class="fragment">
+                    First axiom: <span class="fragment">You must be present. Maps alone are inferior.</span>
+                </h3>
             </section>
 
-            <section data-background-iframe='https://www.sheltoweetrace.com/hike/print/' data-background-opacity="1">
+            <section class='left' data-background-image='./images/double-arch.jpg' data-background-opacity="1">
             </section>
 
-            <section data-background-iframe='https://sheltoweetrace.com/hike/scenic/' data-background-opacity="1">
+            <section class='left' data-background-image='./images/st-day-4.jpg' data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='./images/st-day-3.jpg' data-background-opacity="1">
+            </section>
+
+
+
+            <section class='left' data-background-image='./images/st-day-5.jpg' data-background-opacity="1">
             </section>
 
             <section class='left' data-background-image='./images/st-day.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='./images/st-day-2.jpg' data-background-opacity="1">
+            <section data-background-iframe='https://sheltoweetrace.com/hike/scenic/' data-background-opacity="1">
             </section>
 
-            <section data-background-iframe='https://www.youtube.com/embed/kEkblu_O8Kk' data-background-opacity="1">
+            <section data-background-iframe='https://www.sheltoweetrace.com/hike/print/' data-background-opacity="1">
+            </section>
+
+            <section data-background-image='./images/st-day-2.jpg' data-background-opacity="1">
+                <h3 class="fragment">A better day <a href="https://www.youtube.com/embed/kEkblu_O8Kk"
+                        target="_blank">🔗</a></h3>
+            </section>
+            <section data-background-image='./images/st-day-2.jpg' data-background-opacity="0.3">
+                <h3 class="fragment">
+                    Second axiom: <span class="fragment">We think of discrete places, but they are
+                        interconnected.</span>
+                </h3>
             </section>
 
             <section
@@ -254,13 +312,13 @@
                 <h3>Lidar</h3>
                 <ul>
                     <li class='fragment'>
-                        Lidar detection and ranging.
+                        Lidar detection and ranging
                     </li>
                     <li class='fragment'>
-                        Densely samples the earth's surface
+                        users lasers to sample the earth's surface
                     </li>
                     <li class='fragment'>
-                        to create point cloud of elevations.
+                        and create a dense point cloud of elevations.
                     </li>
                     <li class='fragment'>
                         KyFromAbove <a href="https://kyfromabove.ky.gov/" target="_blank">🔗</a>
@@ -269,6 +327,9 @@
             </section>
 
             <section data-background-iframe='./map-ky/#13.2/38.12258/-83.52908/72/32' data-background-opacity="1">
+            </section>
+
+            <section data-background-iframe='https://contig.us/hawaii/uky-campus'>
             </section>
 
 
@@ -290,9 +351,6 @@
                         <code style="color:rgb(249,181,55)">height = DSM - DEM </code>
                     </li>
                 </ul>
-            </section>
-
-            <section data-background-iframe='https://contig.us/hawaii/uky-campus'>
             </section>
             <section data-background-image='images/01.jpg' data-background-opacity="1" data-background-size="contain"
                 data-background-color="black">
@@ -399,6 +457,49 @@
                 </ul>
             </section>
 
+
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Change: <span class="fragment">multitemporal analysis </span>
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Two statewide point clouds</h3>
+                <ul>
+                    <li class='fragment'>
+                        Simple math
+                    </li>
+                    <li class='fragment'>
+                        <code style="color:rgb(249,181,55)">change = DSM<sub>P2</sub> - DSM<sub>P1</sub></code>
+                    </li>
+                    <li class='fragment'>
+                        but trickier symbology.
+                    </li>
+
+                </ul>
+            </section>
+
+            <section data-background-iframe='https://contig.us/hawaii/lex-removed'>
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_0.jpg" data-background-color="white"
+                data-background-opacity="1" data-background-size="contain">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_1.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_2.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_3.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
                 <h3>Opportunities</h3>
                 <ul>
@@ -423,7 +524,7 @@
                 <h3>Accurate?</h3>
                 <ul>
                     <li class='fragment'>
-                        Again, get into the field.
+                        First axiom: get into the field.
                     </li>
                     <li class='fragment'>
                         But, what about the historical observations?
@@ -437,53 +538,18 @@
                 </ul>
             </section>
 
+
             <section data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>
-                    Compare DSMs from <br>Phase 1 and Phase 2
+                <h3 class="fragment">
+                    Third axiom: <span class="fragment">Change is continuous and irreversible.</span><br><span
+                        class="fragment">And if change is incompatible with humans?</span> <span class="fragment"><a
+                            target="_blank" href="https://www.youtube.com/embed/lAmC_oRblCs?si=RNr6z7UEa52xPLoR">🔗</a>
+                        VR: <a target="_blank" href="https://contig.us/hawaii/uky-campus">🔗</a> <a target="_blank"
+                            href="https://contig.us/hawaii/lex-removed">🔗</a></span>
                 </h3>
             </section>
 
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Simple math</h3>
-                <ul>
-                    <li class='fragment'>
-                        <code style="color:rgb(249,181,55)">change = DSM<sub>P2</sub> - DSM<sub>P1</sub></code>
-                    </li>
-                    <li class='fragment'>
-                        but trickier symbology.
-                    </li>
-                    <li class='fragment'>
-                        Lexington 2010–2019 DSM change over 2019 shaded relief.
-                    </li>
-                </ul>
-            </section>
-
-            <section data-background-iframe='https://contig.us/hawaii/lex-removed'>
-            </section>
-
-            <section data-pre-load data-background-image="./images/change_0.jpg" data-background-color="white"
-                data-background-opacity="1" data-background-size="contain">
-            </section>
-
-            <section data-pre-load data-background-image="./images/change_1.jpg" data-background-color="white"
-                data-background-opacity="1">
-            </section>
-
-            <section data-pre-load data-background-image="./images/change_2.jpg" data-background-color="white"
-                data-background-opacity="1">
-            </section>
-
-            <section data-pre-load data-background-image="./images/change_3.jpg" data-background-color="white"
-                data-background-opacity="1">
-            </section>
-
-            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>
-                    Record of change<br><span class="fragment">lest we forget</span>
-                </h3>
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+            <!-- <section data-background-image='images/background.jpg' data-background-opacity="0.2">
                 <h3>Caveats</h3>
                 <ul>
                     <li class='fragment'>
@@ -496,7 +562,7 @@
                         Fuse other data sources?
                     </li>
                 </ul>
-            </section>
+            </section> -->
 
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
                 <h3>Code</h3>
@@ -525,8 +591,7 @@
                                     </textarea>
             </section>
 
-            <section data-background-iframe='https://www.youtube.com/embed/lAmC_oRblCs?si=RNr6z7UEa52xPLoR'>
-            </section>
+
 
 
 
