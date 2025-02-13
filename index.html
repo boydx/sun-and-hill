@@ -407,10 +407,7 @@
                     <li class='fragment'>
                         Subtract height from REM.
                     </li>
-                    <li class='fragment'>
-                        Jupyter Notebook with ArcPy. <a target='_blank'
-                            href="https://github.com/UKy-GIS/viz-dsm-change/blob/main/scripts/lab-03-inundation.ipynb">🔗</a>
-                    </li>
+
                     <li class='fragment'>
                         GEO509 report. <a target='_blank' href="https://uky-gis.github.io/geo509/report-2022">🔗</a>
                     </li>
@@ -562,55 +559,6 @@
                             href="https://contig.us/hawaii/lex-removed">🔗</a></span>
                 </h3>
             </section>
-
-            <!-- <section data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Caveats</h3>
-                <ul>
-                    <li class='fragment'>
-                        If the replacement structure is same height, no change.
-                    </li>
-                    <li class='fragment'>
-                        No understanding of difference.
-                    </li>
-                    <li class='fragment'>
-                        Fuse other data sources?
-                    </li>
-                </ul>
-            </section> -->
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Code</h3>
-                <ul>
-                    <li class='fragment'>
-                        Jupyter Notebook with ArcPy. <a target='_blank'
-                            href="https://github.com/UKy-GIS/viz-dsm-change/blob/main/scripts/process_DSM_change.ipynb">🔗</a>
-                    </li>
-                    <li class='fragment'>
-                        Shows the process of calculating change between DSMs and colorizing point clouds.
-                    </li>
-                </ul>
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
-                data-markdown data-separator="___" data-background-color=#2D2D2D>
-                <textarea data-template>
-                        ```py 
-                        # Smooth surface to remove artifacts along the edges of tall structures
-                        neighborhood = arcpy.sa.NbrRectangle(3, 3, 'CELL')
-                        change = arcpy.sa.FocalStatistics(change_uncleaned, neighborhood , 'MEDIAN')
-                        # Where has there been increase and decrease in height
-                        filled = arcpy.sa.Con((change > 2), change, 0)
-                        removed = arcpy.sa.Con((change < -2), change, 0)
-                        ```
-                                    </textarea>
-            </section>
-
-
-
-
-
-
-
 
             <section data-pre-load
                 data-background-image="https://www.outragegis.com/data/weather/img/animation/231009/LookRock.gif"
