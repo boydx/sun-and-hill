@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Is your heart skinny?</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,800;1,800&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      background: #20282e;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 400;
+      font-size: 100%;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 3rem;
+    }
+
+    h1 {
+      font-weight: 800;
+    }
+
+    p {
+      line-height: 1.7rem;
+    }
+
+    #map {
+      /* height is set in JS */
+      background: #2d2f31;
+    }
+
+    .legend {
+      font-size: 1rem;
+      border-radius: 5px;
+      max-width: 200px;
+      font-family: "Open Sans", sans-serif;
+      background: rgba(100, 100, 100, 0.9);
+      color: rgba(244, 244, 244, 0.8);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .legend h3 {
+      font-size: 1.1em;
+      font-weight: normal;
+      color: #ddd;
+      margin: 0 0 10px 0;
+    }
+
+    .legend span {
+      width: 20px;
+      height: 20px;
+      margin: 0 10px 4px 0;
+    }
+
+    .legend label {
+      font-size: 0.9rem;
+    }
+
+    a:hover {
+      color: rgb(130, 131, 132);
+      text-decoration: none;
+    }
+
+    .leaflet-bar a {
+      /* Override the default style for Leaflet's zoom  */
+      background: rgba(100, 100, 100, 0.9);
+      color: rgba(244, 244, 244, 0.8);
+    }
+
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+      background: rgb(62, 62, 62);
+      color: rgb(244, 244, 244);
+      border: none;
+      padding: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .leaflet-popup-content p,
+    .leaflet-popup-content a {
+      line-height: 1.6rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .leaflet-popup-content h3 {
+      font-size: 1.8rem;
+      font-weight: 400;
+    }
+
+    /* Custom Tool tips */
+    .leaflet-tooltip-own {
+      background: rgba(58, 58, 58, 0.955);
+      color: rgb(244, 244, 244);
+      border: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      padding: 10px;
+      font-family: "Open Sans", sans-serif;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .leaflet-tooltip-left:before {
+      right: 0;
+      margin-right: -12px;
+      border-left-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .leaflet-tooltip-right:before {
+      left: 0;
+      margin-left: -12px;
+      border-right-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* 
+      Example changing Bootstraps button color.
+      The !important flag is used to override the 
+      Bootstrap styles, if it uses the rule and flag.
+    */
+    /* 
+    .btn-primary {
+      background-color: #885022 !important;
+      border-color: #885022 !important;
+    } */
+
+    /* Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) {}
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) {}
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) {}
+
+    /* Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {}
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <header class="row bg-dark text-white p-2">
+      <div class="col-8">
+        <h1>Is your heart skinny?</h1>
+      </div>
+      <div class="col-4 align-self-center">
+        <p class="d-flex justify-content-end my-auto">
+          <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+            aria-controls="offcanvasExample">
+            Map Info
+          </a>
+        </p>
+      </div>
+    </header>
+
+    <section class="row">
+      <div class="p-0">
+        <div id="map"></div>
+      </div>
+    </section>
+
+    <footer class="row bg-dark text-white p-2">
+      <p class="text-center"></p>
+    </footer>
+  </div>
+
+  <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Map Info</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h3 class="py-2">Then you're high latitude</h3>
+      <p>
+        Geocoded undergraduate institutions of faculty members with hearts. The classic valentine heart shape is
+        distorted by the Mercator projection. The distortion is exaggerated at high latitudes, where the heart appears
+        skinny.
+      </p>
+      <hr />
+      <ul class="list-unstyled">
+        <li>Authored by <a target='_blank' href="https://geography.as.uky.edu/users/blshea1">Boyd Shearer</a></li>
+        <li>Presentation: Sun & hill, topographic methods</li>
+        <li>February 14, 2025</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Add Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- then Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    // Add footer date
+    setDate()
+
+    // set global variables for header, map container, and footer
+    const header = document.querySelector("header");
+    const mapContainer = document.querySelector("#map");
+    const footer = document.querySelector("footer");
+
+    // set map height to fill window
+    mapContainer.style.height =
+      window.innerHeight - header.offsetHeight - footer.offsetHeight + "px";
+
+    // initial Leaflet map options
+    const options = {
+      center: [38.03860075794334, -84.50410183288616],
+      zoom: 12,
+      zoomSnap: 1,
+      zoomControl: false,
+      attributionControl: false,
+    };
+
+    // create Leaflet map and apply options
+    const map = L.map("map", options);
+
+    const CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20
+    }).addTo(map);
+
+    const popup = L.marker([38.03860075794334, -84.50410183288616]).addTo(map)
+      .bindPopup('UKy Geography')
+      .openPopup();
+
+    // fetch data
+    fetch("locations.json")
+      // after it is returned...
+      .then(function (response) {
+        // Parse the JSON into a useable format, then return it
+        return response.json();
+      })
+      // The returned response is now data in a new then method
+      .then(function (data) {
+        // This is the JSON from our response
+        console.log(data);
+        // Pass the data to the drawMap function
+        drawMap(data);
+      })
+      // If there is an error, log it to the console
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    // Example of keeping your page fresh
+    function setDate() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.toLocaleString('default', { month: 'long' });
+      const footerText = document.querySelector("footer p");
+      footerText.innerHTML += `${month} ❤️ ${year} | New Maps Plus`;
+    }
+
+    function drawMap(data) {
+      const eachBounds = [];
+      const locations = L.geoJSON(data, {
+        onEachFeature: function (feature, layer) {
+          // Add the feature to the eachBounds array
+          eachBounds.push(layer.getBounds());
+        },
+        style: function (feature) {
+          return {
+            color: "#ff0000",
+            weight: 4,
+            opacity: 1,
+          };
+        },
+      }).addTo(map);
+      let n = eachBounds.length;
+      setInterval(function () {
+        map.flyToBounds(eachBounds[n - 1],
+          { padding: [50, 50] }
+        );
+        if (n == 1) {
+          n = eachBounds.length;
+        } else {
+          n--;
+        }
+      }, 10000);
+      console.log(eachBounds);
+    }
+
+
+  </script>
+</body>
+
+</html>

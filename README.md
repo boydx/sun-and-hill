@@ -1,2 +1,3 @@
-# sun-and-hill
-An exploration of topographic methods
+# Sun & hill: topographic methods
+
+Presentation: [Sun & hill: topographic methods](index.html)
