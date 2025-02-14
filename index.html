@@ -123,7 +123,7 @@
                     Yesterday in the Great Smokies<br />Webcam
                     <a href="https://www.outragegis.com/weather/img/animation" target="_blank">archive</a>
                 </div>
-                <div class='lr'>Exploring multi-temporal DSMs</div>
+                <div class='lr'>UKy Geography Colloquium, 2025</div>
             </section>
             <section data-pre-load
                 data-background-image="https://www.outragegis.com/data/weather/img/animation/240504/PurchaseKnob.gif"
@@ -200,7 +200,8 @@
             <section class='left' data-background-image='./images/topo-4.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+            <section class='left' data-background-image='https://uky-gis.github.io/pro-relief/images/m02.jpg'
+                data-background-opacity="0.2">
                 <h3>D Rumsey Map Collection</h3>
                 <ul>
                     <li class='fragment'>
@@ -239,7 +240,8 @@
             <section class='left' data-background-image='./images/mt-le-conte-04.jpg' data-background-opacity="1">
             </section>
 
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+            <section class='left' data-background-image='https://uky-gis.github.io/pro-relief/images/m02.jpg'
+                data-background-opacity="0.2">
                 <h3>USGS Topographic maps</h3>
                 <ul>
                     <li class='fragment'>
@@ -274,9 +276,13 @@
             <section class='left' data-background-image='./images/rrg-02.jpg' data-background-opacity="1">
             </section>
 
-            <section -data-background-image='./images/doqq.jpg' data-background-opacity="1">
-                <h3 class="fragment">
-                    First axiom: <span class="fragment">You must be present. Maps alone are inferior.</span>
+            <section data-background-image='./images/bwaerial.jpg' data-background-opacity="1">
+
+            </section>
+            <section data-background-image='./images/bwaerial.jpg' data-background-opacity="0.5">
+                <h3>
+                    First axiom: <span class="fragment">You must be present.</span> <span class="fragment">Maps live in
+                        the areas they show.</span>
                 </h3>
             </section>
 
@@ -308,8 +314,8 @@
                         target="_blank">🔗</a></h3>
             </section>
             <section data-background-image='./images/st-day-2.jpg' data-background-opacity="0.3">
-                <h3 class="fragment">
-                    Second axiom: <span class="fragment">We think of discrete places, but they are
+                <h3>
+                    Second axiom: <span class="fragment">Places are
                         interconnected.</span>
                 </h3>
             </section>
@@ -404,9 +410,6 @@
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
                 <h3>25 ft above Troublesome</h3>
                 <ul>
-                    <li class='fragment'>
-                        Subtract height from REM.
-                    </li>
 
                     <li class='fragment'>
                         GEO509 report. <a target='_blank' href="https://uky-gis.github.io/geo509/report-2022">🔗</a>
@@ -429,12 +432,21 @@
                     <li class='fragment'>
                         Use NAIP NDVI to identify trees.
                     </li>
+
                     <li class='fragment'>
                         Extract heights from DSM.
                     </li>
                     <li class='fragment'>
-                        Visually select NDVI values for trees.
+                        <code style="color:rgb(249,181,55)">trees = (NDVI > x) & (height > y) </code>
                     </li>
+                    <li class='fragment'>
+                        National Agriculture Imagery Program (NAIP)
+                    </li>
+                    <li class='fragment'>
+                        Normalized Difference Vegetation Index (NDVI)
+                    </li>
+
+
                 </ul>
             </section>
 
@@ -448,12 +460,6 @@
 
             <section
                 data-background-iframe='https://uky-gis.github.io/lexington-canopy-model/#14.21/38.03177/-84.51465'>
-            </section>
-
-            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>
-                    Good enough for cartography?
-                </h3>
             </section>
 
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
@@ -480,7 +486,7 @@
                 <h3>Two statewide point clouds</h3>
                 <ul>
                     <li class='fragment'>
-                        Simple math
+                        Simple math comparing DSMs.
                     </li>
                     <li class='fragment'>
                         <code style="color:rgb(249,181,55)">change = DSM<sub>P2</sub> - DSM<sub>P1</sub></code>
@@ -551,17 +557,20 @@
 
 
             <section data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3 class="fragment">
-                    Third axiom: <span class="fragment">Change is continuous and irreversible.</span><br><span
-                        class="fragment">And if change is incompatible with humans?</span> <span class="fragment"><a
-                            target="_blank" href="https://www.youtube.com/embed/lAmC_oRblCs?si=RNr6z7UEa52xPLoR">🔗</a>
-                        VR: <a target="_blank" href="https://contig.us/hawaii/uky-campus">🔗</a> <a target="_blank"
-                            href="https://contig.us/hawaii/lex-removed">🔗</a></span>
-                </h3>
+                <h3>
+                    Third axiom: <span class="fragment">Places change.</span>
+                    <h3>
+                        <h4><span class="fragment">(And if change <br>is
+                                incompatible with humans?)</span> </h4>
+                        <H3 class="fragment"><a target="_blank"
+                                href="https://www.youtube.com/embed/lAmC_oRblCs?si=RNr6z7UEa52xPLoR">🔗</a>
+                            VR: <a target="_blank" href="https://contig.us/hawaii/uky-campus">🔗</a> <a target="_blank"
+                                href="https://contig.us/hawaii/lex-removed">🔗</a></H3>
+                    </h3>
             </section>
 
             <section data-pre-load
-                data-background-image="https://www.outragegis.com/data/weather/img/animation/231009/LookRock.gif"
+                data-background-image="https://www.outragegis.com/data/weather/img/animation/240504/PurchaseKnob.gif"
                 data-background-opacity="0.4">
                 <h5>Thank you</h5>
             </section>

@@ -14,11 +14,19 @@ Boyd Shearer has more than five years of creative teaching and course developmen
 
 ## Sources
 
+<h3>Hearts of UKy Geography</h3>
+<ul>
+    <li class='fragment'>
+        Geocoded undergraduate institutions <a target="_blank"
+            href="https://boydx.github.io/sun-and-hill/map-faculty">🔗</a>
+    </li>
+</ul>
+
 <h3>David Rumsey Map Collection</h3>
 <ul>
     <li class='fragment'>
         Eduard Imhof, 1895-1986 <a target="_blank"
-            href="hhttps://www.davidrumsey.com/luna/servlet/view/search?search=Submit&cat=0&q=topography+imhof&dateRangeStart=&dateRangeEnd=&sort=pub_list_no_initialsort%2Cpub_date%2Cpub_list_no%2Cseries_no">🔗</a>
+            href="https://www.davidrumsey.com/luna/servlet/view/search?search=Submit&cat=0&q=topography+imhof&dateRangeStart=&dateRangeEnd=&sort=pub_list_no_initialsort%2Cpub_date%2Cpub_list_no%2Cseries_no">🔗</a>
     </li>
     <li class='fragment'>
         Carte de France, 1750-1815 <a target="_blank"
@@ -54,7 +62,7 @@ Boyd Shearer has more than five years of creative teaching and course developmen
         Lidar data source: KyFromAbove <a href="https://kyfromabove.ky.gov/" target="_blank">🔗</a>
     </li>
     <li class='fragment'>
-        KY shaded relief derived from Digital Elevation Model (DEM) <a href="./map-ky/#13.2/38.12258/-83.52908/72/32"
+        KY shaded relief derived from Digital Elevation Model (DEM) <a href="https://boydx.github.io/sun-and-hill/map-ky/#13.2/38.12258/-83.52908/72/32"
             target="_blank">🔗</a>
     </li>
     <li class='fragment'>
