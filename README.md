@@ -10,7 +10,7 @@ During the last century, advances in aviation and camera technology made topogra
 
 ![Sun & hill: topographic methods](https://geography.as.uky.edu/system/files/inline-images/sunandhill.png)
 
-Boyd is a Senior Lecturer of Mapping and GIS at the University of Kentucky Department of Geography with a research focus in topographic visualization, terrain analysis, and trail mapping. He has 15+ years of creative teaching and course development and 25+ years of cartographic design and map publishing experience.
+Boyd is a Senior Lecturer of Mapping and GIS at the University of Kentucky Department of Geography with a research focus on topographic visualization, terrain analysis, and trail mapping. He has over 15 years of experience in creative teaching and course development, as well as over 25 years of experience in cartographic design and map publishing.
 
 ## Sources
 
