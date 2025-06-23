@@ -10,7 +10,7 @@ During the last century, advances in aviation and camera technology made topogra
 
 ![Sun & hill: topographic methods](https://geography.as.uky.edu/system/files/inline-images/sunandhill.png)
 
-Boyd Shearer has more than five years of creative teaching and course development and over twenty-five years of map publishing, web design, and GIS consulting. He has a worked as a cartographer for the University of Kentucky Appalachian Center, where he mapped the social, environmental, and economic conditions of Appalachia. He has published original research on historic parks in Kentucky and has GPS mapped hundreds of miles of recreational trail. He is dedicated to making maps for our national parks and forests. Boyd is presently a Lecturer of mapping and GIS at the University of Kentucky with a research focus in developing hiking trail metrics, lidar and 3D maps, and creating near real-time park weather maps.
+Boyd is a Senior Lecturer of Mapping and GIS at the University of Kentucky Department of Geography with a research focus in topographic visualization, terrain analysis, and trail mapping. He has 15+ years of creative teaching and course development and 25+ years of cartographic design and map publishing experience.
 
 ## Sources
 
